@@ -16,7 +16,7 @@ export function SiteHeader({ user, onOpenAuth, onSignOut }: SiteHeaderProps) {
   return (
     <header className="nav">
       <a className="brand" href="#"><span className="brand-mark">f.</span><span>F-todo</span></a>
-      <nav className="nav-links"><a href="#necedir">Necə işləyir?</a><a href="#haqqinda">Haqqında</a></nav>
+      <nav className="nav-links"><a href="/how-it-works">Necə işləyir?</a></nav>
       <div className="nav-actions">
         {user ? (
           <div className="account-wrap">

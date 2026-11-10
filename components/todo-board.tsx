@@ -6,6 +6,7 @@ import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Coffee, ListTodo,
 import { formatDate, formatDuration, Todo } from '@/lib/todos';
 
 type TodoBoardProps = {
+  showIntro: boolean;
   todos: Todo[];
   dailyTodos: Todo[];
   onceTodos: Todo[];
@@ -22,12 +23,12 @@ type TodoBoardProps = {
 
 export function TodoBoard(props: TodoBoardProps) {
   const [expandedDate, setExpandedDate] = useState<string | null>(null);
-  const { todos, dailyTodos, onceTodos, previousDays, today, todayKey } = props;
+  const { showIntro, todos, dailyTodos, onceTodos, previousDays, today, todayKey } = props;
 
   return (
-    <section className="workspace" id="necedir">
-      <div className="workspace-head">
-        <div><div className="section-kicker">SƏNİN MƏKANIN</div><h2>Bu gün nələr var?</h2></div>
+    <section className={`workspace ${showIntro ? '' : 'workspace-compact'}`} id="necedir">
+      <div className={`workspace-head ${showIntro ? '' : 'workspace-head-compact'}`}>
+        {showIntro && <div><div className="section-kicker">SƏNİN MƏKANIN</div><h2>Bu gün nələr var?</h2></div>}
         <button className="add-small" onClick={() => props.onCreate('once')}><Plus size={16}/> Yeni todo</button>
       </div>
       <div className="today-date"><CalendarDays size={15}/><span>{today ? formatDate(today) : 'Bu gün'}</span><span className="date-today">BU GÜN</span></div>

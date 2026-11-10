@@ -39,6 +39,7 @@ export function AuthModal({ open, mode, busy, message, onClose, onModeChange, on
         {message && <div className="auth-message">{message}</div>}
         <p className="switch-auth">{mode === 'signup' ? 'Artıq hesabın var?' : 'Hələ hesabın yoxdur?'} <button onClick={() => onModeChange(mode === 'signup' ? 'login' : 'signup')}>{mode === 'signup' ? 'Daxil ol' : 'Qeydiyyatdan keç'}</button></p>
         <p className="auth-privacy">Davam etməklə <u>istifadə şərtlərini</u> qəbul edirsən.</p>
+        <p className="auth-remember">Bu brauzerdə girişiniz yadda saxlanılır.</p>
       </section>
     </div>
   );

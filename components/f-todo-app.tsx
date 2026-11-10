@@ -13,7 +13,7 @@ import { useTodos } from '@/hooks/use-todos';
 import { getPreviousTodoDays, toDateKey, Todo } from '@/lib/todos';
 
 export function FTodoApp() {
-  const { user, busy, submitEmailAuth, signInWithGoogle, signOut } = useAuth();
+  const { user, busy, initialized: authInitialized, submitEmailAuth, signInWithGoogle, signOut } = useAuth();
   const { todos, syncError, retrySync, saveTodos, deleteTodo } = useTodos(user?.id);
   const [authOpen, setAuthOpen] = useState(false);
   const [authMode, setAuthMode] = useState<'signup' | 'login'>('signup');
@@ -130,9 +130,9 @@ export function FTodoApp() {
   return (
     <main>
       <SiteHeader user={user} onOpenAuth={(mode) => { setAuthMode(mode); setAuthMessage(''); setAuthOpen(true); }} onSignOut={signOut}/>
-      <Hero date={today} onCreate={() => { setNewTodoKind('once'); setFormOpen(true); }}/>
+      {authInitialized && !user && <Hero date={today} onCreate={() => { setNewTodoKind('once'); setFormOpen(true); }}/>}
       {syncError && <div className="sync-notice" role="alert"><span>{syncError} Qonaq todo-ları brauzerdə saxlanılıb.</span><button onClick={retrySync}>Yenidən yoxla</button></div>}
-      <TodoBoard todos={todos} dailyTodos={todayTodos} onceTodos={onceTodos} previousDays={previousDays} today={today} todayKey={todayKey} elapsed={getElapsed} onCreate={(kind) => { setNewTodoKind(kind); setFormOpen(true); }} onToggleDone={toggleDone} onOpenDetails={setSelectedTodo} onStartTimer={startTimer} onPauseTimer={pauseTimer}/>
+      <TodoBoard showIntro={!user} todos={todos} dailyTodos={todayTodos} onceTodos={onceTodos} previousDays={previousDays} today={today} todayKey={todayKey} elapsed={getElapsed} onCreate={(kind) => { setNewTodoKind(kind); setFormOpen(true); }} onToggleDone={toggleDone} onOpenDetails={setSelectedTodo} onStartTimer={startTimer} onPauseTimer={pauseTimer}/>
       <SiteFooter year={today?.getFullYear() ?? null}/>
       <TodoFormModal open={formOpen} initialKind={newTodoKind} today={today} onClose={() => setFormOpen(false)} onSubmit={handleCreateTodo}/>
       <AuthModal open={authOpen} mode={authMode} busy={busy} message={authMessage} onClose={() => setAuthOpen(false)} onModeChange={(mode) => { setAuthMode(mode); setAuthMessage(''); }} onSubmit={handleAuthSubmit} onGoogle={handleGoogleAuth}/>

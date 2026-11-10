@@ -1,0 +1,23 @@
+Supabase cədvəllərində koddan oxunan və yazılan sütunlar
+
+Sorğu xülasəsi:
+- `todos`: `select('*')`, `upsert(...)` və `delete().eq('id', ...)` çağırışları var.
+- `todo_completions`, `time_sessions`, `profiles`: bu cədvəllərə `supabase.from(...)` çağırışı tapılmadı.
+- `select('*')` bütün `todos` sütunlarını oxuyur. Sətirlər `fromTodoRow` funksiyasında tətbiq modelinə çevrilir.
+
+| Cədvəl adı | Koddakı sütun adı | Dəyərin tipi | Fayl və sətir nömrəsi |
+|---|---|---|---|
+| `todos` | `id` | `string` (UUID) | `lib/todos.ts:24, 56, 71`; silmə filtri: `hooks/use-todos.ts:82` |
+| `todos` | `user_id` | `string` (UUID) | `lib/todos.ts:25, 57` |
+| `todos` | `title` | `string` | `lib/todos.ts:26, 58, 72` |
+| `todos` | `created_at` | `string` (ISO tarix/saat) | `lib/todos.ts:27, 59, 73`; sıralama: `hooks/use-todos.ts:35` |
+| `todos` | `kind` | `string` (`'once'` və ya `'daily'`) | `lib/todos.ts:28, 60, 74` |
+| `todos` | `days` | `number[]` | `lib/todos.ts:29, 61, 75` |
+| `todos` | `time` | `string` | `lib/todos.ts:30, 62, 76` |
+| `todos` | `done_dates` | `string[]` (ISO tarixlər) | `lib/todos.ts:31, 63, 77` |
+| `todos` | `elapsed` | `object` / `Record<string, number>` (tarix → saniyə) | `lib/todos.ts:32, 64, 78` |
+| `todos` | `sessions` | `object` / `Record<string, TimerSession[]>` (tarix → sessiya massivi) | `lib/todos.ts:2-6, 33, 65, 79` |
+
+DB sxemindəki tiplər: `supabase/schema.sql:3-12` (`uuid`, `text`, `timestamptz`, `integer[]`, `date[]`, `jsonb`).
+
+Upsert obyektləri `lib/todos.ts:54-66`-da yaradılır. Onlar Supabase-ə `hooks/use-todos.ts:50` və `hooks/use-todos.ts:75` sətrlərindən göndərilir. Oxuma sorğusu `hooks/use-todos.ts:35`-dədir.

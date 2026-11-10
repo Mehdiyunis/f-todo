@@ -14,13 +14,28 @@ function asAuthUser(user: { id: string; email?: string; user_metadata?: Record<s
 export function useAuth() {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [busy, setBusy] = useState(false);
+  const [initialized, setInitialized] = useState(!supabase);
 
   useEffect(() => {
-    if (!supabase) return;
-    supabase.auth.getSession().then(({ data }) => setUser(asAuthUser(data.session?.user ?? null)));
+    if (!supabase) {
+      setInitialized(true);
+      return;
+    }
+    let authEventReceived = false;
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      authEventReceived = true;
       setUser(asAuthUser(session?.user ?? null));
+      setInitialized(true);
     });
+
+    supabase.auth.getSession()
+      .then(({ data }) => {
+        if (!authEventReceived) setUser(asAuthUser(data.session?.user ?? null));
+      })
+      .catch(() => {
+        if (!authEventReceived) setUser(null);
+      })
+      .finally(() => setInitialized(true));
     return () => subscription.unsubscribe();
   }, []);
 
@@ -73,5 +88,5 @@ export function useAuth() {
     setUser(null);
   }
 
-  return { user, busy, submitEmailAuth, signInWithGoogle, signOut };
+  return { user, busy, initialized, submitEmailAuth, signInWithGoogle, signOut };
 }

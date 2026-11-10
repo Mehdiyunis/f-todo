@@ -21,6 +21,8 @@ Supabase qurulmayıbsa todo-lar brauzerin `localStorage` yaddaşında qalır. Su
 
 Email/şifrə ilə qeydiyyatda Supabase təsdiq linki göndərir. Google OAuth-da e-poçt doğrulaması Google hesabı üzərindən aparılır. İstifadəçilər Supabase Auth-da, todo-lar isə RLS ilə qorunan `public.todos` cədvəlində saxlanılır.
 
+Supabase sessiyası eyni brauzerin `localStorage`-ında saxlanır və token avtomatik yenilənir. İstifadəçi çıxış etmədiyi müddətdə saytı yenidən açanda təkrar giriş tələb olunmur.
+
 Gündəlik xatırlatmalar brauzer bildiriş icazəsi ilə, tətbiq açıq olduğu müddətdə işləyir. Bildiriş icazəsi ilk gündəlik todo yaradılarkən soruşulur.
 
 ## Google SMTP ilə təsdiq e-poçtları

@@ -4,10 +4,10 @@ export function Hero({ date, onCreate }: { date: Date | null; onCreate: () => vo
   return (
     <section className="hero">
       <div className="hero-copy">
-        <h1>Az et.<br/><em>Yaxşı et.</em></h1>
-        <p>Günün içində itən fikirlər yox, sənə yer açan bir siyahı. Planla, başla və hər dəfə bir işi tamamla.</p>
+        <h1>Az et.<br/><em>Saz et.</em></h1>
+        <p>Günün içində itən fikirlər yox, sənə yer açan bir siyahı. Planla, başla və hər dəfə bir işi daha bacarmaqdan həzz al.</p>
         <button className="primary-button" onClick={onCreate}><Plus size={17}/> Todo yarat <ArrowRight size={16}/></button>
-        <div className="hero-caption"><span className="tiny-check"><Check size={11}/></span> Hesab açmadan başlaya bilərsən</div>
+        <div className="hero-caption"><span className="tiny-check"><Check size={11}/></span> Hesab açmadan başlaya bilərsən </div>
       </div>
       <div className="hero-art">
         <div className="sun-disc"/><div className="hero-note note-back"><span className="note-line"/><span className="note-line short"/><span className="note-check"><Check size={12}/></span></div>
