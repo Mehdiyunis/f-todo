@@ -16,3 +16,43 @@
 @media(max-width:700px){.info-page{padding:0 20px}.info-nav{height:68px}.info-hero{padding:56px 3% 45px}.info-hero h1{font-size:43px;letter-spacing:-2px}.info-hero>p{font-size:13px}.info-features{grid-template-columns:1fr;padding:20px 3% 31px}.info-feature{grid-template-columns:25px 38px 1fr;gap:11px;padding:20px 0}.info-feature-icon{width:38px;height:38px}.info-feature h2{font-size:15px}.info-feature p{font-size:12px}.free-note{margin:0 3%;padding:19px 17px;align-items:flex-start;gap:12px}.free-note h2{font-size:15px}.free-note p{font-size:11px;line-height:1.6}.info-contact{margin:28px 3% 0;padding:23px 0 30px;align-items:flex-start;flex-direction:column}.info-contact h2{font-size:18px}.info-contact>a{font-size:12px}}
 .workspace-compact{padding-top:18px}.workspace-head-compact{justify-content:flex-end}.workspace-compact .today-date{margin-top:15px;margin-bottom:11px}@media(max-width:700px){.workspace-compact{padding-top:12px}.workspace-compact .today-date{margin-top:12px;margin-bottom:10px}}
 html,body{min-height:100%}body{min-height:100vh;min-height:100dvh}main{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}.footer,.info-contact{margin-top:auto}
+/* One-step size increase for site copy and controls. */
+body{font-size:15px}
+.nav-links,.login-link,.back-link{font-size:13px}
+.signup-button,.primary-button{font-size:13px;padding-top:14px;padding-bottom:14px}
+.hero-copy>p{font-size:14px}
+.hero-caption{font-size:11px}
+.eyebrow{font-size:10px}
+.mini-task{font-size:11px}
+.note-top,.note-footer{font-size:9px}
+.workspace .section-kicker{font-size:10px}
+.panel-heading p{font-size:12px}
+.todo-title{font-size:15px}
+.todo-time{font-size:13px}
+.timer-action,.empty-state p,.empty-state button,.history-toggle,.add-small{font-size:13px}
+.timer-clock,.history-meta{font-size:12px}
+.bottom-note h3{font-size:14px}.bottom-note p{font-size:11px}
+.footer{font-size:10px}.footer-brand{font-size:14px}
+.account-button{font-size:12px}.account-email{font-size:11px}.account-menu button{font-size:12px}
+.modal-kicker{font-size:9px}.modal-desc{font-size:12px}.field-label{font-size:11px}.text-input,.time-input-wrap input{font-size:12px}
+.created-date{font-size:11px}.auto-tag{font-size:9px}.type-option b{font-size:11px}.type-option small{font-size:9px}
+.weekday-picks button,.weekday-picks>span{font-size:10px}.time-input-wrap span{font-size:10px}
+.submit-button,.google-button{font-size:12px}.auth-modal h2{font-size:24px}.or-divider{font-size:10px}
+.switch-auth,.switch-auth button{font-size:11px}.auth-privacy{font-size:9px}.auth-message{font-size:11px}
+.detail-meta{font-size:10px}.detail-chip{font-size:9px}.detail-box h4,.delete-button{font-size:10px}
+.session-row{font-size:10px}.session-row small{font-size:9px}.sync-notice,.sync-notice button{font-size:11px}
+.info-feature-index{font-size:11px}.info-feature h2{font-size:17px}.info-feature p{font-size:13px}
+.free-note h2{font-size:18px}.free-note p{font-size:13px}.info-contact h2{font-size:21px}.info-contact p{font-size:13px}.info-contact>a{font-size:14px}
+@media(max-width:700px){.login-link{font-size:12px}.signup-button{font-size:11px;padding-top:10px;padding-bottom:10px}.hero-copy>p{font-size:13px}.workspace .section-kicker{font-size:10px}.panel-heading p{font-size:11px}.todo-title{font-size:14px}.todo-time{font-size:12px}.timer-action,.empty-state p,.empty-state button{font-size:11px}.history-toggle{font-size:14px}.bottom-note h3{font-size:12px}.bottom-note p{font-size:10px}.footer{font-size:10px}.info-hero>p{font-size:14px}.info-feature h2{font-size:16px}.info-feature p{font-size:13px}.free-note h2{font-size:16px}.free-note p{font-size:12px}.info-contact h2{font-size:19px}.info-contact p{font-size:13px}.info-contact>a{font-size:13px}}
+@media(max-width:380px){.todo-title{font-size:13px}.todo-time{font-size:11px}}
+@media(max-width:700px){.bottom-note>div{position:relative;z-index:1}.bottom-note .note-plant{z-index:0}}
+/* Give todo lists the full header width and more room for task names. */
+.workspace{padding-left:0;padding-right:0}
+.todo-columns{gap:0}
+.todo-panel{min-width:0;padding-left:14px;padding-right:14px;border-left:0;border-right:0;border-radius:0;box-shadow:none}
+.todo-row{grid-template-columns:24px minmax(0,1fr) auto 24px;column-gap:7px}
+.todo-title{min-width:0;white-space:normal;overflow-wrap:anywhere;text-overflow:clip}
+.history-todos .todo-row{grid-template-columns:24px minmax(0,1fr) auto 24px}
+@media(max-width:700px){.workspace{padding-left:0;padding-right:0}.todo-columns{gap:0}.todo-panel{padding-left:10px;padding-right:10px}.todo-row{grid-template-columns:23px minmax(0,1fr) auto 22px;column-gap:6px}.history-todos{padding-left:10px;padding-right:10px}.history-todos .todo-row{grid-template-columns:23px minmax(0,1fr) auto 22px}}
+@media(min-width:701px){.todo-panel{padding-left:18px;padding-right:18px}.todo-columns{column-gap:8px}}
+.todo-panel{border-radius:12px}
